@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>La Asociación</title>
+<style>
+    body {
+        margin: 0;
+        font-family: 'IBM Plex Sans', sans-serif;
+        background: #ffffff;
+        color: #333;
+        display: flex;
+        height: 100vh;
+    }
+
+    /* Layout general */
+    .left-panel {
+        flex: 2;
+        padding: 40px;
+        border-right: 1px solid #ddd;
+        overflow-y: auto;
+    }
+
+    .right-panel {
+        flex: 1;
+        padding: 40px 30px;
+        background: #f7f9fc;
+        overflow-y: auto;
+        border-left: 1px solid #ddd;
+    }
+
+    /* Títulos */
+    h1 {
+        margin-top: 0;
+        font-size: 2rem;
+        color: #1A73B8;
+    }
+
+    /* Menú de subsecciones */
+    .submenu-item {
+        padding: 12px 10px;
+        margin-bottom: 8px;
+        cursor: pointer;
+        border-radius: 4px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #ffffff;
+        border: 1px solid #ddd;
+        transition: background 0.2s;
+    }
+
+    .submenu-item:hover {
+        background: #eef5ff;
+    }
+
+    .submenu-item.active {
+        background: #dceaff;
+        border-color: #1A73B8;
+        font-weight: 600;
+    }
+
+    .arrow {
+        transition: transform 0.2s;
+    }
+
+    .submenu-item.active .arrow {
+        transform: rotate(90deg);
+    }
+
+    /* Contenido dinámico */
+    .content-block {
+        display: none;
+    }
+
+    .content-block.active {
+        display: block;
+    }
+</style>
+</head>
+
+<body>
+
+    <!-- PANEL IZQUIERDO: CONTENIDO -->
+    <div class="left-panel">
+        <h1>La Asociación</h1>
+
+        <div id="content-quienes" class="content-block active">
+            <h2>¿Quiénes somos?</h2>
+            <p>Historia, misión y organización interna de la Asociación Eméritos IBM.</p>
+            <img src="imagenes/asociacion2.png" style="max-width:100%; border-radius:6px;">
+        </div>
+
+        <div id="content-sedes" class="content-block">
+            <h2>Sedes Locales</h2>
+            <p>Información sobre las delegaciones: Asturias, Cataluña, Baleares, etc.</p>
+        </div>
+
+        <div id="content-distinciones" class="content-block">
+            <h2>Distinciones</h2>
+            <p>Reconocimientos otorgados por la asociación.</p>
+        </div>
+
+        <div id="content-contacto" class="content-block">
+            <h2>Contacto</h2>
+            <p>Datos de la sede en Madrid, teléfonos y formulario de contacto.</p>
+        </div>
+    </div>
+
+    <!-- PANEL DERECHO: SUBSECCIONES -->
+    <div class="right-panel">
+
+        <div class="submenu-item active" data-target="content-quienes">
+            ¿Quiénes somos?
+            <span class="arrow">▶</span>
+        </div>
+
+        <div class="submenu-item" data-target="content-sedes">
+            Sedes Locales
+            <span class="arrow">▶</span>
+        </div>
+
+        <div class="submenu-item" data-target="content-distinciones">
+            Distinciones
+            <span class="arrow">▶</span>
+        </div>
+
+        <div class="submenu-item" data-target="content-contacto">
+            Contacto
+            <span class="arrow">▶</span>
+        </div>
+
+    </div>
+
+<script>
+    // Control del menú lateral
+    const items = document.querySelectorAll('.submenu-item');
+    const blocks = document.querySelectorAll('.content-block');
+
+    items.forEach(item => {
+        item.addEventListener('click', () => {
+
+            // Desactivar todos
+            items.forEach(i => i.classList.remove('active'));
+            blocks.forEach(b => b.classList.remove('active'));
+
+            // Activar el seleccionado
+            item.classList.add('active');
+            const target = document.getElementById(item.dataset.target);
+            target.classList.add('active');
+        });
+    });
+</script>
+
+</body>
+</html>
