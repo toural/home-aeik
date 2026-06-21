@@ -336,12 +336,19 @@
 
 </div>
 
-<!-- SCRIPT GENERAL -->
 <script>
 /* ============================================================
    SISTEMA GENERAL DE DESPLEGABLES PARA LA HOME AEIK
    ============================================================ */
 
+/* Cerrar TODOS los desplegables */
+function cerrarTodos() {
+    document.querySelectorAll(".subsecciones").forEach(box => {
+        box.style.display = "none";
+    });
+}
+
+/* Crear un desplegable */
 function crearDesplegable(idTexto, idIcono, idCaja, paginaDestino) {
 
     const txt = document.getElementById(idTexto);
@@ -350,19 +357,23 @@ function crearDesplegable(idTexto, idIcono, idCaja, paginaDestino) {
 
     if (!txt || !icon || !box) return;
 
+    // Abrir/cerrar desplegable
     txt.addEventListener("click", (e) => {
         e.stopPropagation();
-        box.style.display = (box.style.display === "block") ? "none" : "block";
+
+        // Cerrar todos antes de abrir este
+        cerrarTodos();
+
+        // Abrir este
+        box.style.display = "block";
     });
 
-    document.addEventListener("click", () => {
-        box.style.display = "none";
-    });
-
+    // Icono → ir a la página principal
     icon.addEventListener("click", () => {
         window.location.href = paginaDestino;
     });
 
+    // Items del desplegable → navegar a subsección
     box.querySelectorAll(".sub-item").forEach(item => {
         item.addEventListener("click", (e) => {
             e.stopPropagation();
@@ -372,6 +383,11 @@ function crearDesplegable(idTexto, idIcono, idCaja, paginaDestino) {
     });
 }
 
+/* Cerrar desplegables al hacer click fuera */
+document.addEventListener("click", () => {
+    cerrarTodos();
+});
+
 /* ACTIVAR TODOS LOS DESPLEGABLES */
 crearDesplegable("txt-asociacion", "icon-asociacion", "sub-asociacion", "asociacion.html");
 crearDesplegable("txt-guias", "icon-guias", "sub-guias", "guias.html");
@@ -379,10 +395,9 @@ crearDesplegable("txt-beneficios", "icon-beneficios", "sub-beneficios", "benefic
 crearDesplegable("txt-socios", "icon-socios", "sub-socios", "socios.html");
 crearDesplegable("txt-noticias", "icon-noticias", "sub-noticias", "noticias.html");
 crearDesplegable("txt-actividades", "icon-actividades", "sub-actividades", "actividades.html");
-crearDesplegable("txt-hemeroteca","icon-hemeroteca","sub-hemeroteca","hemeroteca.html"
-);
-
+crearDesplegable("txt-hemeroteca", "icon-hemeroteca", "sub-hemeroteca", "hemeroteca.html");
 </script>
+
 
 </body>
 </html>
