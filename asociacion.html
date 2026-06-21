@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>La Asociación</title>
+<title>Asociación</title>
 
 <style>
     body {
@@ -115,7 +115,7 @@
             </svg>
         </a>
 
-        <h1>La Asociación</h1>
+        <h1>Asociación</h1>
 
         <!-- Contenido dinámico -->
         <div id="content-quienes" class="content-block active">
@@ -178,20 +178,13 @@
     const items = document.querySelectorAll('.submenu-item');
     const blocks = document.querySelectorAll('.content-block');
 
+    // Cambio de sección al hacer clic en el menú
     items.forEach(item => {
         item.addEventListener('click', () => {
 
-            // Desactivar todos
             items.forEach(i => i.classList.remove('active'));
             blocks.forEach(b => b.classList.remove('active'));
 
-            // Activar seleccionado
             item.classList.add('active');
             const target = document.getElementById(item.dataset.target);
-            target.classList.add('active');
-        });
-    });
-</script>
-
-</body>
-</html>
+            target
