@@ -268,16 +268,32 @@
         </div>
     </div>
 </div>
+
+    <!-- NOTICIAS -->
+<div class="item">
+    <div class="item-header">
+        <img src="imagenes/noticias.png" id="icon-noticias">
+
+        <div class="label-wrapper">
+            <span id="txt-noticias">Noticias</span>
+
+            <div class="subsecciones" id="sub-noticias">
+                <div class="sub-item" data-section="ultimas">Últimas Noticias</div>
+                <div class="sub-item" data-section="memoriam">In Memoriam</div>
+                <div class="sub-item" data-section="archivo">Archivo Histórico</div>
+                <div class="sub-item" data-section="galeria">Galería Multimedia</div>
+            </div>
+        </div>
+    </div>
+</div>
+    
     <!-- RESTO DEL MOSAICO -->
    
 
 
     
 
-    <div class="item">
-        <img src="imagenes/noticias.png" alt="Noticias">
-        <h3>Noticias</h3>
-    </div>
+   
 
     <div class="item">
         <img src="imagenes/actividades.png" alt="Actividades">
@@ -373,7 +389,13 @@ crearDesplegable(
     "sub-socios",
     "socios.html"
 );
-
+    
+crearDesplegable(
+    "txt-noticias",
+    "icon-noticias",
+    "sub-noticias",
+    "noticias.html"
+);
 
 </script>
 
