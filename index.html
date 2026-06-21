@@ -164,30 +164,32 @@
 </head>
 
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-    const toggle = document.querySelector('.search-toggle');
-    const box = document.querySelector('.search-box');
-
-    toggle.addEventListener('click', () => {
-        const visible = box.style.display === 'block';
-        box.style.display = visible ? 'none' : 'block';
-        if (!visible) {
-            box.querySelector('input').focus();
-        }
-    });
+// Abrir/cerrar desplegable
+txt.addEventListener("click", (e) => {
+    e.stopPropagation();
+    box.style.display = (box.style.display === "block") ? "none" : "block";
 });
 
+// Cerrar al hacer click fuera
+document.addEventListener("click", () => {
+    box.style.display = "none";
+});
 
+// Icono → ir a la página
+icon.addEventListener("click", () => {
+    window.location.href = "asociacion.html";
+});
+
+// Items del desplegable → navegar
 document.querySelectorAll(".sub-item").forEach(item => {
-    item.addEventListener("click", () => {
+    item.addEventListener("click", (e) => {
+        e.stopPropagation();
         const section = item.dataset.section;
         window.location.href = "asociacion.html?sec=" + section;
-        
     });
 });
-
 </script>
-    
+
 <body>
 
 <div class="top-bar">
